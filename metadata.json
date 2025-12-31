@@ -1,0 +1,8 @@
+{
+  "name": "IA Chat",
+  "description": "A modern, responsive chat application built with React and Tailwind CSS, powered by Google's Gemini 3 Flash model.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
