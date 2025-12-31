@@ -96,13 +96,13 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-slate-900 p-4 font-kanit transition-colors duration-300">
-      <div className="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-xl w-full max-w-sm border border-gray-100 dark:border-slate-700">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4 font-kanit">
+      <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-sm border border-gray-100">
         <div className="text-center mb-8">
             <div className="w-16 h-16 bg-green-500 rounded-2xl mx-auto flex items-center justify-center mb-4 shadow-lg shadow-green-500/30 text-white text-3xl">
                 IA
             </div>
-            <h1 className="text-2xl font-bold text-gray-800 dark:text-white tracking-tight">
+            <h1 className="text-2xl font-bold text-gray-800 tracking-tight">
                 {isRegistering ? 'สร้างบัญชีใหม่' : 'ยินดีต้อนรับกลับ'}
             </h1>
             <p className="text-gray-400 text-sm mt-1">
@@ -111,7 +111,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
         </div>
 
         {error && (
-            <div className="bg-red-50 dark:bg-red-900/20 text-red-500 dark:text-red-300 text-sm p-3 rounded-xl mb-6 text-center border border-red-100 dark:border-red-800/50">
+            <div className="bg-red-50 text-red-500 text-sm p-3 rounded-xl mb-6 text-center border border-red-100">
                 {error}
             </div>
         )}
@@ -120,10 +120,10 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
           
           {isRegistering && (
             <div className="group">
-                <label className="block text-xs font-semibold text-gray-500 dark:text-slate-400 mb-1.5 ml-1">ชื่อที่ใช้แสดง</label>
+                <label className="block text-xs font-semibold text-gray-500 mb-1.5 ml-1">ชื่อที่ใช้แสดง</label>
                 <input
                     type="text"
-                    className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-600 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all dark:text-white text-gray-800 placeholder-gray-400"
+                    className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all text-gray-800 placeholder-gray-400"
                     placeholder="เช่น สมชาย ใจดี"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -132,10 +132,10 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
           )}
 
           <div className="group">
-            <label className="block text-xs font-semibold text-gray-500 dark:text-slate-400 mb-1.5 ml-1">ชื่อผู้ใช้</label>
+            <label className="block text-xs font-semibold text-gray-500 mb-1.5 ml-1">ชื่อผู้ใช้</label>
             <input
               type="text"
-              className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-600 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all dark:text-white text-gray-800 placeholder-gray-400"
+              className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all text-gray-800 placeholder-gray-400"
               placeholder="Username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
@@ -143,10 +143,10 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
           </div>
 
           <div className="group">
-            <label className="block text-xs font-semibold text-gray-500 dark:text-slate-400 mb-1.5 ml-1">รหัสผ่าน</label>
+            <label className="block text-xs font-semibold text-gray-500 mb-1.5 ml-1">รหัสผ่าน</label>
             <input
               type="password"
-              className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-600 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all dark:text-white text-gray-800 placeholder-gray-400"
+              className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all text-gray-800 placeholder-gray-400"
               placeholder="••••••••"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -161,8 +161,8 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
           </button>
         </form>
 
-        <div className="mt-8 text-center border-t border-gray-100 dark:border-slate-700 pt-6">
-            <p className="text-gray-500 dark:text-slate-400 text-sm">
+        <div className="mt-8 text-center border-t border-gray-100 pt-6">
+            <p className="text-gray-500 text-sm">
                 {isRegistering ? 'มีบัญชีอยู่แล้ว?' : 'ยังไม่มีบัญชี?'}
                 <button 
                     onClick={() => {
