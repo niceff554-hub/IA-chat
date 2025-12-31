@@ -1,7 +1,25 @@
 import { GoogleGenAI, Chat, Content, Part } from "@google/genai";
 import { Message, Sender, Attachment } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Initialize lazily to prevent "process is not defined" errors during initial load
+let aiInstance: GoogleGenAI | null = null;
+
+const getAiClient = (): GoogleGenAI => {
+  if (!aiInstance) {
+    let apiKey = '';
+    try {
+      // Safely access process.env
+      if (typeof process !== 'undefined' && process.env && process.env.API_KEY) {
+        apiKey = process.env.API_KEY;
+      }
+    } catch (e) {
+      console.warn("Environment variable access failed, using empty key.");
+    }
+    
+    aiInstance = new GoogleGenAI({ apiKey });
+  }
+  return aiInstance;
+};
 
 // Helper to convert internal Message type to Gemini Content type for history
 const mapMessagesToHistory = (messages: Message[]): Content[] => {
@@ -25,7 +43,7 @@ const mapMessagesToHistory = (messages: Message[]): Content[] => {
 export const createChatSession = (previousHistory: Message[] = []): Chat => {
   const history = mapMessagesToHistory(previousHistory);
   
-  return ai.chats.create({
+  return getAiClient().chats.create({
     model: 'gemini-3-flash-preview',
     history: history,
     config: {
